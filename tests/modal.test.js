@@ -77,9 +77,12 @@ describe("Modal Dialog", () => {
 
       const spokenPhrases = await collectSpokenPhrases(virtual);
 
-      expect(
-        spokenPhrases.some((p) => p.toLowerCase().includes("button, x"))
-      ).toBe(true);
+      // "X" is not acceptable — should hear "Close settings dialog"
+      const closeButtonText = spokenPhrases.find((p) =>
+        p.toLowerCase().includes("close")
+      );
+      expect(closeButtonText).toBeDefined();
+      expect(closeButtonText.toLowerCase()).not.toBe("x");
     });
-  });
+    });
 });
