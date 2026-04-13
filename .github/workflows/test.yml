@@ -12,12 +12,13 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
 
       - run: npm ci
+      
       - name: Run a11y tests
-        run: npm run test --reporter=verbose --reporter=junit --outputFile=test-results.xml
+        run: npm run test -- --reporter=verbose --reporter=junit --outputFile=test-results.xml
  
       - name: Upload test results
         if: always()
