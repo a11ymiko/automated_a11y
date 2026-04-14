@@ -65,10 +65,12 @@ describe("Modal Dialog", () => {
       renderHTML(badModal());
       await virtual.start({ container: document.body });
 
+
       const spokenPhrases = await collectSpokenPhrases(virtual);
 
-      // A plain <div> has no role — screen reader is silent about context
-      expect(spokenPhrases.some((p) => p.toLowerCase().includes("dialog"))).toBe(false);
+      // SR users should hear: the dialog role, its title
+      expect(spokenPhrases.some((p) => p.toLowerCase().includes("dialog"))).toBe(true);
+      expect(spokenPhrases.some((p) => p.includes("Settings"))).toBe(true);
     });
 
     test("close button only announces 'X' — meaningless to SR users", async () => {

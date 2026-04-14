@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Accordion - A11y Automation</title>
+    </head>
+    <body>
+        <main>
+            <h1>Accordion</h1>
+            <p>This is an example of an accessible and inaccesssible accordion components that are used for automated tests.</p>
+            <h2>Good example</h2>
+            <section aria-labelledby="faq-heading">
+            <h3 id="faq-heading">Frequently Asked Questions</h3>
+            <div>
+                <h4>
+                <button
+                    id="faq-btn-1"
+                    aria-expanded="false"
+                    aria-controls="faq-panel-1"
+                >
+                    What is WCAG?
+                </button>
+                </h4>
+                <div
+                id="faq-panel-1"
+                role="region"
+                aria-labelledby="faq-btn-1"
+                hidden
+                >
+                <p>WCAG stands for Web Content Accessibility Guidelines.</p>
+                </div>
+            </div>
+            <div>
+                <h4>
+                <button
+                    id="faq-btn-2"
+                    aria-expanded="true"
+                    aria-controls="faq-panel-2"
+                >
+                    What is ARIA?
+                </button>
+                </h4>
+                <div
+                id="faq-panel-2"
+                role="region"
+                aria-labelledby="faq-btn-2"
+                >
+                <p>ARIA stands for Accessible Rich Internet Applications.</p>
+                </div>
+            </div>
+            </section>
+            <h2>Bad example</h2>
+            <div class="faq-item">
+                <div id="faq-btn-1" onclick="toggle(1)">What is WCAG?</div>
+                <div id="faq-panel-1" style="display:none">
+                WCAG stands for Web Content Accessibility Guidelines.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div id="faq-btn-2" onclick="toggle(2)">What is ARIA?</div>
+                <div id="faq-panel-2">
+                ARIA stands for Accessible Rich Internet Applications.
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
